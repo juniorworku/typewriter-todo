@@ -2,3 +2,22 @@ node_modules/
 dist/
 release/
 *.log
+
+# Local Obsidian vault data
+.obsidian/
+.trash/
+vault/
+Vault/
+Obsidian/
+Obsidian Vault/
+Study & Tasks/
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+*.mobileprovision

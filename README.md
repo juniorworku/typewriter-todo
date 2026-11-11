@@ -66,11 +66,13 @@ xvfb-run -a node tests/electron-smoke.cjs
 
 The test uses a temporary app profile and vault. It stubs only the native directory dialog's selection; the rest of the flow uses the actual renderer, IPC, and disk writes. In a restricted CI container that cannot support Chromium's sandbox, set `PIXEL_TEST_NO_SANDBOX=1` for this test only. Optional `PIXEL_SCREENSHOT_DIR=/absolute/output/directory` saves screenshots.
 
-## macOS workflow
+## macOS installers
 
-Publish **this directory as its own repository root**, including `.github` and `package-lock.json`. No sibling project or shared workspace is needed. The workflow runs on every push or manual dispatch using `macos-latest`, tests/builds, and uploads separate **arm64 (Apple Silicon)** and **x64 (Intel)** DMG and ZIP artifacts. Download them from the GitHub Actions run. ZIPs contain the `.app` bundles.
+The GitHub Actions workflow runs on every push and on manual dispatch using `macos-latest`. Each run tests and builds separate **arm64 (Apple Silicon)** and **x64 (Intel)** packages and uploads an architecture-specific artifact named `typewriter-todo-mac-arm64` or `typewriter-todo-mac-x64`. Each artifact contains a `.dmg` installer and a `.zip` containing the `.app` bundle. Download either artifact from the successful run's **Artifacts** section.
 
-Bundles are **unsigned**. Apple Developer signing and notarization credentials are not configured. Gatekeeper may require explicit approval for an unsigned download. macOS packaging runs remotely; development on Linux uses no Swift, Xcode, or macOS-only APIs.
+These packages are **unsigned and not notarized** by default. To install, open the matching DMG and drag **Typewriter To-Do.app** to **Applications**, or unzip the ZIP and move the app to Applications. On first launch, macOS may block the app because it was downloaded from the internet and is not signed. If you trust the download, Control-click the app and choose **Open**, then confirm **Open**; alternatively, after the first blocked launch, open **System Settings → Privacy & Security** and choose **Open Anyway** for Typewriter To-Do. Do not disable Gatekeeper globally.
+
+Optional distribution signing/notarization requires an Apple Developer ID certificate and credentials configured as GitHub Actions secrets (for example `CSC_LINK`, `CSC_KEY_PASSWORD`, `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, and `APPLE_TEAM_ID`), plus enabling the corresponding signing configuration in the workflow. No Apple credentials are stored in this repository. macOS packaging runs remotely; development on Linux uses no Swift, Xcode, or macOS-only APIs.
 
 ## Assets and independence
 

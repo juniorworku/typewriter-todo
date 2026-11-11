@@ -30,7 +30,7 @@
     "wait-on": "^8.0.2"
   },
   "build": {
-    "appId": "org.pixeldesk.typewritertodo",
+    "appId": "com.juniorworku.typewriter-todo",
     "productName": "Typewriter To-Do",
     "files": [
       "dist/**/*",

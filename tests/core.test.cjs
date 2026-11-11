@@ -70,6 +70,6 @@ test("path containment, symlink protection, serialization, and independent confi
   assert.equal((await store.tasks()).tasks.length, 15);
   const other = new Store(path.join(root, "config"));
   await other.init();
-  assert.equal(other.config.vault, vault);
+  assert.equal(other.config.vault, await fs.realpath(vault));
   assert.equal(other.config.work, undefined);
 });
