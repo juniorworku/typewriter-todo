@@ -1,0 +1,464 @@
+@font-face {
+  font-family: VT323;
+  src: url("./assets/VT323-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  font-family: VT323, monospace;
+  color: #263a2d;
+  background: #d2d6bd;
+  font-synthesis: none;
+  --ink: #263a2d;
+  --paper: #f4efcc;
+  --pane: #e7e7b8;
+  --accent: #59794b;
+  --shadow: #8c9a73;
+  --line: #b4ba8a;
+  --btn: #d9ddb0;
+}
+* {
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+body {
+  margin: 0;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--btn);
+  color: var(--ink);
+  padding: 8px 14px;
+  font-size: 20px;
+  box-shadow: 3px 3px 0 var(--shadow);
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(1.06);
+  transform: translate(-1px, -1px);
+}
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px dashed var(--accent);
+  outline-offset: 4px;
+}
+input {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  padding: 10px 12px;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 23px;
+  width: 100%;
+}
+input::placeholder {
+  color: #8a9270;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+.desktop {
+  min-height: 100vh;
+  padding: 36px 34px;
+  background-image:
+    linear-gradient(90deg, #263a2d08 1px, transparent 1px),
+    linear-gradient(#263a2d08 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+.window {
+  max-width: 1000px;
+  margin: auto;
+  background: var(--paper);
+}
+.pixel {
+  border: 3px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--shadow);
+  border-radius: 0;
+}
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 17px;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+.titlebar button {
+  font-size: 18px;
+  padding: 4px 9px;
+  box-shadow: none;
+  border-color: var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+}
+.titlebar > div {
+  display: flex;
+  gap: 10px;
+}
+main {
+  padding: 28px 36px 20px;
+}
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.eyebrow {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.badge {
+  border: 2px solid var(--ink);
+  padding: 5px 10px;
+  background: var(--pane);
+  font-size: 18px;
+}
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 1px;
+  margin: 20px 0 12px;
+}
+h2 {
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0;
+}
+.subtitle {
+  font-size: 23px;
+  color: #788560;
+  margin: 12px 0 24px;
+}
+.status {
+  box-shadow: 3px 3px 0 var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 12px 14px;
+  font-size: 18px;
+  background: var(--pane);
+}
+.status button {
+  margin-left: auto;
+  font-size: 16px;
+  padding: 4px 8px;
+}
+.light {
+  width: 10px;
+  height: 10px;
+  background: #ad8054;
+  flex-shrink: 0;
+}
+.light.on {
+  background: #59794b;
+  box-shadow: 2px 2px 0 #30402a;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 15px;
+  color: #7e8866;
+  padding-top: 20px;
+}
+.shade {
+  position: fixed;
+  inset: 0;
+  background: #142c2399;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+.modal {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 24px;
+  width: 620px;
+  max-height: 90vh;
+  overflow: auto;
+}
+.modal header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.modal > label {
+  margin-top: 24px;
+}
+.path {
+  font-size: 21px;
+  overflow-wrap: anywhere;
+  color: var(--accent);
+}
+.durations {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.durations label {
+  width: 33%;
+  font-size: 17px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.check input {
+  margin: 0;
+}
+.modal > .primary {
+  margin-top: 22px;
+}
+.muted {
+  font-size: 18px;
+  color: #7e8866;
+}
+.error {
+  background: #e7c2a4;
+  border: 2px solid #8e4e37;
+  padding: 14px;
+  margin-top: 18px;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+.typewriter {
+  --ink: #493e33;
+  --paper: #faf0d9;
+  --pane: #e9dbba;
+  --accent: #7a644b;
+  --shadow: #a3967a;
+  --line: #cbbb99;
+  --btn: #e9dbba;
+  background-color: #cfc3a8;
+}
+.typewriter.dark {
+  --ink: #b8d694;
+  --paper: #182c26;
+  --pane: #20392e;
+  --accent: #557a43;
+  --shadow: #0b1b16;
+  --line: #425e41;
+  --btn: #294130;
+  background-color: #0e201a;
+}
+.typewriter .titlebar {
+  background: #493e33;
+  color: #f4ead3;
+}
+.typewriter .titlebar button {
+  background: #493e33;
+  color: #f4ead3;
+  border-color: #c8bba1;
+}
+.typewriter h1 {
+  font-size: 45px;
+  margin-top: 24px;
+}
+.paper-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin: 20px 0 10px;
+}
+.paper-title button {
+  font-size: 17px;
+  margin-left: 16px;
+  padding: 5px 9px;
+}
+.paper {
+  background: var(--paper);
+  padding: 12px 22px 18px;
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+.ruler {
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 16px;
+  color: var(--line);
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px dashed var(--line);
+  padding: 4px 0 12px;
+}
+.lines {
+  min-height: 180px;
+  max-height: 330px;
+  overflow-y: auto;
+  scroll-padding: 130px 0;
+  scroll-behavior: smooth;
+}
+.task-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 74px;
+  border-bottom: 1px dashed var(--line);
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
+.line-number {
+  font-size: 17px;
+  color: var(--shadow);
+  padding-top: 5px;
+}
+.row-toggle {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  box-shadow: 2px 2px 0 var(--shadow);
+  flex-shrink: 0;
+  font-size: 25px;
+  line-height: 20px;
+  margin-top: 2px;
+}
+.task-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+.task-text small {
+  display: block;
+  font-size: 14px;
+  color: var(--shadow);
+  margin-top: 5px;
+}
+.done .task-text > span {
+  text-decoration: line-through;
+  color: var(--shadow);
+}
+.edit-button {
+  box-shadow: none;
+  border: 0;
+  font-size: 16px;
+  padding: 6px;
+  color: var(--accent);
+  background: transparent;
+}
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: var(--shadow);
+}
+.empty p {
+  font-size: 24px;
+  margin: 5px;
+}
+.empty small {
+  font-size: 19px;
+}
+.pixel-typewriter {
+  font-size: 55px;
+  line-height: 1;
+}
+.entry {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-top: 2px solid var(--line);
+  padding-top: 16px;
+  margin-top: 18px;
+}
+.entry input {
+  border: 0;
+  font-size: 24px;
+  padding: 9px 0;
+  background: transparent;
+}
+.entry .primary {
+  white-space: nowrap;
+}
+.prompt {
+  font-size: 29px;
+  color: var(--accent);
+}
+.paper-footer {
+  font-size: 15px;
+  color: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+.edit-form {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.edit-form input {
+  width: 100%;
+  padding: 4px 7px;
+  font-size: 22px;
+}
+.edit-form button {
+  font-size: 16px;
+  padding: 3px 8px;
+}
+.typewriter .subtitle {
+  color: var(--accent);
+}
+@keyframes tick {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (max-width: 850px) {
+  .desktop {
+    padding: 16px;
+  }
+  .titlebar {
+    font-size: 21px;
+    padding: 10px;
+  }
+  .titlebar button {
+    font-size: 15px;
+  }
+  main {
+    padding: 25px;
+  }
+  footer {
+    font-size: 13px;
+  }
+  .typewriter .titlebar {
+    flex-wrap: wrap;
+  }
+  .eyebrow {
+    font-size: 16px;
+  }
+}

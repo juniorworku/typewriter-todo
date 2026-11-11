@@ -1,0 +1,61 @@
+{
+  "name": "typewriter-todo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Typewriter To-Do \u2014 standalone pixel desktop app",
+  "author": "Typewriter To-Do",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5174 && PIXEL_DESK_DEV=1 electron .\"",
+    "build": "tsc --noEmit && vite build",
+    "lint": "tsc --noEmit && node --check electron/main.cjs && node --check electron/store.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "start": "electron .",
+    "package:linux": "npm run build && electron-builder --linux AppImage --publish never",
+    "package:mac": "npm run build && electron-builder --mac dmg zip --publish never"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "electron": "^43.0.0",
+    "electron-builder": "^26.0.12",
+    "concurrently": "^9.1.2",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "org.pixeldesk.typewritertodo",
+    "productName": "Typewriter To-Do",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office"
+    },
+    "artifactName": "${productName}-${version}-${arch}.${ext}"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
