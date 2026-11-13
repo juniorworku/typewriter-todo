@@ -42,8 +42,8 @@ else {
         win = new BrowserWindow({
           width: 1100,
           height: 850,
-          minWidth: 760,
-          minHeight: 650,
+          minWidth: 320,
+          minHeight: 360,
           backgroundColor: "#f5f2eb",
           webPreferences: {
             preload: path.join(__dirname, "preload.cjs"),

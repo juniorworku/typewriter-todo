@@ -462,3 +462,161 @@ footer {
     font-size: 16px;
   }
 }
+@media (max-width: 520px) {
+  .desktop {
+    padding: 8px;
+  }
+  .pixel {
+    border-width: 2px;
+    box-shadow: 4px 4px 0 var(--shadow);
+  }
+  .titlebar {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 8px;
+    font-size: 18px;
+  }
+  .titlebar > div {
+    width: 100%;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  .titlebar button {
+    padding: 3px 5px;
+    font-size: 14px;
+  }
+  main {
+    padding: 14px 10px 12px;
+  }
+  .intro {
+    align-items: flex-start;
+  }
+  .eyebrow,
+  .badge {
+    font-size: 14px;
+  }
+  .badge {
+    padding: 3px 6px;
+  }
+  .typewriter h1 {
+    font-size: clamp(25px, 8vw, 36px);
+    margin: 14px 0 8px;
+  }
+  .subtitle {
+    font-size: 18px;
+    margin: 8px 0 14px;
+  }
+  .paper-title {
+    gap: 6px;
+    font-size: 14px;
+  }
+  .paper-title button {
+    margin-left: 4px;
+    padding: 3px 5px;
+    font-size: 13px;
+  }
+  .paper {
+    padding: 8px 10px 12px;
+  }
+  .ruler {
+    padding: 3px 0 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .lines {
+    min-height: 72px;
+    max-height: 220px;
+    scroll-padding: 60px 0;
+  }
+  .task-row {
+    gap: 7px;
+    min-height: 56px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+  .line-number {
+    padding-top: 2px;
+    font-size: 14px;
+  }
+  .row-toggle {
+    width: 22px;
+    height: 22px;
+    font-size: 20px;
+    line-height: 17px;
+  }
+  .task-text {
+    font-size: 19px;
+  }
+  .task-text small {
+    font-size: 12px;
+  }
+  .edit-button {
+    padding: 4px;
+    font-size: 13px;
+  }
+  .empty {
+    padding: 12px 4px;
+  }
+  .pixel-typewriter {
+    font-size: 42px;
+  }
+  .empty p {
+    font-size: 20px;
+  }
+  .empty small {
+    font-size: 16px;
+  }
+  .entry {
+    gap: 7px;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  .entry input {
+    font-size: 18px;
+  }
+  .entry .primary {
+    padding: 6px;
+    font-size: 16px;
+  }
+  .prompt {
+    font-size: 23px;
+  }
+  .paper-footer {
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 12px;
+  }
+  .paper-footer span {
+    font-size: 11px;
+  }
+  .status {
+    gap: 8px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  footer {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-top: 12px;
+    font-size: 11px;
+  }
+  .shade {
+    padding: 10px;
+  }
+  .modal {
+    width: 100%;
+    max-height: calc(100vh - 20px);
+    padding: 16px;
+  }
+  .modal header {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .modal header h2 {
+    font-size: 24px;
+  }
+  .modal > label {
+    margin-top: 16px;
+  }
+}

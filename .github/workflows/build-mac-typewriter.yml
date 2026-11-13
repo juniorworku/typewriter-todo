@@ -2,6 +2,16 @@ name: Build Typewriter To-Do macOS
 on:
   push:
   workflow_dispatch:
+    inputs:
+      architecture:
+        description: macOS architecture to build
+        required: true
+        default: x64
+        type: choice
+        options:
+          - x64
+          - arm64
+          - both
 permissions:
   contents: read
 jobs:
@@ -9,7 +19,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        arch: [arm64, x64]
+        arch: ${{ github.event_name == 'workflow_dispatch' && inputs.architecture != 'both' && fromJSON(format('["{0}"]', inputs.architecture)) || fromJSON('["arm64","x64"]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

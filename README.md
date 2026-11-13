@@ -23,6 +23,8 @@ The app reads existing task lists and preserves unrelated headings/prose and fen
 
 This is local file sync, not a distributed merge protocol. Avoid simultaneous edits during the small check/rename window: external writers cannot share an atomic transaction with the app. Task rows written externally without a creation field retain their existing metadata; new tasks created in the app always receive one. The app does not change dates or create a new study file at midnight.
 
+The app window is resizable down to **320 × 360 pixels**. At compact sizes the controls and task list use a tighter layout, so the app can sit on the desktop like a small task widget.
+
 The workflow is `.github/workflows/build-mac-typewriter.yml`. Vite's development port is **5174**, so both independent apps can run side by side.
 
 Tests cover nested Markdown tasks, timestamps and edits, stale-edit conflicts, fenced examples, serialization, paths, and config persistence. The Electron smoke test verifies task creation/completion/editing, automatic external refresh, both themes, persisted preferences, and keyboard navigation.
@@ -69,6 +71,8 @@ The test uses a temporary app profile and vault. It stubs only the native direct
 ## macOS installers
 
 The GitHub Actions workflow runs on every push and on manual dispatch using `macos-latest`. Each run tests and builds separate **arm64 (Apple Silicon)** and **x64 (Intel)** packages and uploads an architecture-specific artifact named `typewriter-todo-mac-arm64` or `typewriter-todo-mac-x64`. Each artifact contains a `.dmg` installer and a `.zip` containing the `.app` bundle. Download either artifact from the successful run's **Artifacts** section.
+
+Manual runs let you choose **x64**, **arm64**, or **both**; the default is x64. Pushes continue to build both architectures. The macOS app uses the Typewriter To-Do icon from `build/icon.icns`.
 
 These packages are **unsigned and not notarized** by default. To install, open the matching DMG and drag **Typewriter To-Do.app** to **Applications**, or unzip the ZIP and move the app to Applications. On first launch, macOS may block the app because it was downloaded from the internet and is not signed. If you trust the download, Control-click the app and choose **Open**, then confirm **Open**; alternatively, after the first blocked launch, open **System Settings → Privacy & Security** and choose **Open Anyway** for Typewriter To-Do. Do not disable Gatekeeper globally.
 
