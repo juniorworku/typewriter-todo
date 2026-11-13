@@ -72,7 +72,7 @@ The test uses a temporary app profile and vault. It stubs only the native direct
 
 The GitHub Actions workflow runs on every push and on manual dispatch using `macos-latest`. Each run tests and builds separate **arm64 (Apple Silicon)** and **x64 (Intel)** packages and uploads an architecture-specific artifact named `typewriter-todo-mac-arm64` or `typewriter-todo-mac-x64`. Each artifact contains a `.dmg` installer and a `.zip` containing the `.app` bundle. Download either artifact from the successful run's **Artifacts** section.
 
-Manual runs let you choose **x64**, **arm64**, or **both**; the default is x64. Pushes continue to build both architectures. The macOS app uses the Typewriter To-Do icon from `build/icon.icns`.
+Manual runs let you choose **x64**, **arm64**, or **both**; the default is x64. Pushes to branches continue to build both architectures. To run an x64-only build from a tag, push a tag named `mac-x64-*`. The macOS app uses the Typewriter To-Do icon from `build/icon.icns`.
 
 These packages are **unsigned and not notarized** by default. To install, open the matching DMG and drag **Typewriter To-Do.app** to **Applications**, or unzip the ZIP and move the app to Applications. On first launch, macOS may block the app because it was downloaded from the internet and is not signed. If you trust the download, Control-click the app and choose **Open**, then confirm **Open**; alternatively, after the first blocked launch, open **System Settings → Privacy & Security** and choose **Open Anyway** for Typewriter To-Do. Do not disable Gatekeeper globally.
 
